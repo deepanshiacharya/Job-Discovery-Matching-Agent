@@ -1,0 +1,132 @@
+{
+  "name": "Candidate",
+  "email": "candidate@example.com",
+  "phone": "+91-9876543210",
+  "approx_experience_years": 1.5,
+  "experience_preference": {
+    "min_years": 0.0,
+    "max_years": 3.0,
+    "tolerance_years": 1.5
+  },
+  "education": [
+    {
+      "degree": "M.Sc. Data Science",
+      "field": "Data Science",
+      "institution": "Dhirubhai Ambani University",
+      "start_year": 2024,
+      "end_year": 2026,
+      "status": "In Progress"
+    },
+    {
+      "degree": "B.Sc. (Hons.) Mathematics",
+      "field": "Mathematics",
+      "institution": "University of Delhi",
+      "start_year": 2019,
+      "end_year": 2022,
+      "status": "Completed"
+    }
+  ],
+  "experience": [
+    {
+      "title": "Business Analyst Intern",
+      "company": "Amazon",
+      "duration": "6 months",
+      "description": "Business analytics, SQL reporting, metric dashboards, and customer behavior insights."
+    },
+    {
+      "title": "AI Researcher / AI Engineer",
+      "company": "Avkalan.ai",
+      "duration": "8 months",
+      "description": "Building agentic workflows, LLM applications, NLP pipelines, LangChain, and LangGraph prototypes."
+    },
+    {
+      "title": "Data Analyst",
+      "company": "Analytics / E-Commerce Advertising",
+      "duration": "7 months",
+      "description": "Data analytics, ETL pipelines, ad-performance visualization with Power BI, Tableau, and SQL."
+    },
+    {
+      "title": "Research Student",
+      "company": "Smart Energy / AI Research",
+      "duration": "5 months",
+      "description": "Applied Machine Learning, Deep Learning with PyTorch, statistical modeling, and time series forecasting."
+    }
+  ],
+  "technical_skills": [
+    "Python",
+    "SQL",
+    "Excel",
+    "Power BI",
+    "Tableau",
+    "Machine Learning",
+    "Deep Learning",
+    "Statistics",
+    "NLP",
+    "PyTorch",
+    "Scikit-learn",
+    "PySpark",
+    "Airflow",
+    "Docker",
+    "PostgreSQL",
+    "MySQL",
+    "DBT",
+    "MLflow",
+    "DVC",
+    "LangChain",
+    "LangGraph",
+    "LangFlow",
+    "Ollama",
+    "LLMs",
+    "Generative AI",
+    "Agentic AI"
+  ],
+  "target_roles": [
+    "Data Analyst",
+    "Business Analyst",
+    "Data Scientist",
+    "Data Science Intern",
+    "Machine Learning Engineer",
+    "Junior ML Engineer",
+    "AI Engineer",
+    "AI/ML Engineer",
+    "Data Engineer",
+    "Analytics Engineer",
+    "Business Intelligence Analyst",
+    "Product Analyst",
+    "Research Analyst",
+    "AI Research Intern",
+    "Machine Learning Intern"
+  ],
+  "location_preferences": [
+    "Mumbai",
+    "Pune",
+    "Delhi NCR",
+    "Noida",
+    "Gurgaon",
+    "Gurugram",
+    "Delhi",
+    "Bangalore",
+    "Hyderabad",
+    "Remote",
+    "India"
+  ],
+  "work_modes": [
+    "Remote",
+    "Hybrid",
+    "On-site"
+  ],
+  "scoring_weights": {
+    "role_relevance": 0.25,
+    "skills_match": 0.25,
+    "experience_match": 0.20,
+    "education_match": 0.10,
+    "location_work_mode": 0.10,
+    "seniority": 0.05,
+    "freshness": 0.05
+  },
+  "score_thresholds": {
+    "HIGH_MATCH": 85.0,
+    "GOOD_MATCH": 70.0,
+    "STRETCH": 55.0
+  }
+}

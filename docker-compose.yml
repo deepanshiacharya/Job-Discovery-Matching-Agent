@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: job_agent_postgres
+    environment:
+      POSTGRES_DB: job_agent
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d job_agent"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: job_agent_app
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql+psycopg2://postgres:postgres@db:5432/job_agent
+      SQLITE_FALLBACK: "False"
+      EMAIL_PROVIDER: mock
+      REPORT_DIR: /app/reports
+    volumes:
+      - ./reports:/app/reports
+      - ./data:/app/data
+      - ./config:/app/config
+
+volumes:
+  postgres_data:
