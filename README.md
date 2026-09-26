@@ -1,6 +1,10 @@
 # 🤖 AI-Powered Job Discovery & Matching Agent
 
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://job-discovery-matching-agent-vwnvcalcnpvujurldvgokt.streamlit.app/)
+
 An intelligent, multi-agent automated system built with **LangGraph**, **Pydantic**, **SQLAlchemy**, and **RapidFuzz** that continuously discovers, standardizes, deduplicates, and evaluates job listings against a candidate's specific profile—generating structured Excel match reports and automated email notifications.
+
+> 🚀 **[Live Demo → Click the badge above to launch the Streamlit dashboard](https://job-discovery-matching-agent-vwnvcalcnpvujurldvgokt.streamlit.app/)**
 
 ---
 
