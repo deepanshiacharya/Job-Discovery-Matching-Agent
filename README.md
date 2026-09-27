@@ -1,14 +1,14 @@
-# 🤖 AI-Powered Job Discovery & Matching Agent
+# AI-Powered Job Discovery & Matching Agent
 
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://job-discovery-matching-agent-vwnvcalcnpvujurldvgokt.streamlit.app/)
 
-An intelligent, multi-agent automated system built with **LangGraph**, **Pydantic**, **SQLAlchemy**, and **RapidFuzz** that continuously discovers, standardizes, deduplicates, and evaluates job listings against a candidate's specific profile—generating structured Excel match reports and automated email notifications.
+**Live Dashboard:** [https://job-discovery-matching-agent-vwnvcalcnpvujurldvgokt.streamlit.app/](https://job-discovery-matching-agent-vwnvcalcnpvujurldvgokt.streamlit.app/)
 
-> 🚀 **[Live Demo → Click the badge above to launch the Streamlit dashboard](https://job-discovery-matching-agent-vwnvcalcnpvujurldvgokt.streamlit.app/)**
+An intelligent, multi-agent automated system built with **LangGraph**, **Pydantic**, **SQLAlchemy**, and **RapidFuzz** that continuously discovers, standardizes, deduplicates, and evaluates job listings against a candidate's specific profile—generating structured Excel match reports and automated email notifications.
 
 ---
 
-## 🚀 Key Features
+## Key Features
 
 - **Multi-Source Ingestion & Discovery**: Pluggable adapters for LinkedIn, Indeed, Naukri, and direct career portals with resilient error isolation.
 - **Canonical Normalization**: Standardizes non-uniform job titles, experience requirements, work modes (Remote/Hybrid/On-site), and date postings.
@@ -17,7 +17,7 @@ An intelligent, multi-agent automated system built with **LangGraph**, **Pydanti
   1. *Layer 1 (Hard Filters)*: Experience boundaries with candidate-specified tolerance, location & work mode constraints.
   2. *Layer 2 (Heuristic Scoring)*: 7-dimension weighted scoring (Role relevance, Technical skills match, Experience level match, Education match, Location & work mode, Seniority alignment, Freshness).
   3. *Layer 3 (Semantic Similarity)*: Embedding vector similarity hook for deep semantic alignment.
-  4. *Layer 4 (Categorization)*: Stratifies into `HIGH_MATCH` (≥85%), `GOOD_MATCH` (≥70%), `STRETCH` (≥55%), and `LOW_MATCH` (<55%).
+  4. *Layer 4 (Categorization)*: Stratifies into `HIGH_MATCH` (>=85%), `GOOD_MATCH` (>=70%), `STRETCH` (>=55%), and `LOW_MATCH` (<55%).
 - **Explainable Match Insights**: Provides explicit bulleted "Why This Matches" explanations, alongside matched and missing skill breakdowns.
 - **Dual-Engine Database Persistence**: Production-ready PostgreSQL persistence with automated fallback to zero-config SQLite (`job_agent.db`).
 - **Professional Excel Reporting**: Generates formatted, multi-sheet workbooks (`Summary` dashboard + color-coded `Job Matches` with frozen panes, hyperlinks, and auto-filters).
@@ -26,7 +26,7 @@ An intelligent, multi-agent automated system built with **LangGraph**, **Pydanti
 
 ---
 
-## 🏗️ Architecture & Pipeline Flow
+## Architecture & Pipeline Flow
 
 ```mermaid
 graph TD
@@ -43,7 +43,7 @@ graph TD
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 AI_jobApply/
@@ -93,7 +93,7 @@ AI_jobApply/
 
 ---
 
-## 🛠️ Quick Start
+## Quick Start
 
 ### 1. Installation
 Clone the repository and install the dependencies in a virtual environment:
@@ -129,7 +129,7 @@ The pipeline will:
 
 ---
 
-## 🧪 Running Tests
+## Running Tests
 
 Run the full automated test suite with `pytest`:
 ```bash
@@ -139,7 +139,7 @@ Includes tests for profile loading, job normalization, multi-signal deduplicatio
 
 ---
 
-## 🐳 Docker Support
+## Docker Support
 
 To run the agent alongside PostgreSQL using Docker Compose:
 ```bash

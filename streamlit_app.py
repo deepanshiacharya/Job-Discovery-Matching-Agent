@@ -16,7 +16,7 @@ from app.matching.schema import MatchCategory, ApplicationStatus
 # --- Page Configuration ---
 st.set_page_config(
     page_title="Job Discovery & Matching Agent",
-    page_icon="🎯",
+    page_icon=":briefcase:",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -258,7 +258,7 @@ def update_application_status_in_db(canonical_id: str, new_status: str):
 
 
 def run_pipeline_orchestration():
-    with st.spinner("🚀 Launching multi-agent LangGraph pipeline..."):
+    with st.spinner("Launching multi-agent LangGraph pipeline..."):
         app = create_job_discovery_graph()
         final_state = app.invoke({})
         st.session_state["pipeline_results"] = final_state
@@ -292,23 +292,23 @@ with st.sidebar:
     st.divider()
 
     st.subheader("Candidate Quick View")
-    st.markdown(f"**👤 Name:** {candidate_data.get('name', 'Candidate')}")
-    st.markdown(f"**📧 Email:** {candidate_data.get('email', 'N/A')}")
-    st.markdown(f"**💼 Experience:** ~{candidate_data.get('approx_experience_years', 0)} years")
+    st.markdown(f"**Name:** {candidate_data.get('name', 'Candidate')}")
+    st.markdown(f"**Email:** {candidate_data.get('email', 'N/A')}")
+    st.markdown(f"**Experience:** ~{candidate_data.get('approx_experience_years', 0)} years")
     
     top_roles = candidate_data.get("target_roles", [])[:3]
-    st.markdown(f"**🎯 Target Roles:** {', '.join(top_roles)}...")
+    st.markdown(f"**Target Roles:** {', '.join(top_roles)}...")
 
     st.divider()
     
     st.subheader("Pipeline Controls")
-    if st.button("⚡ Run Discovery & Matching", type="primary", use_container_width=True):
+    if st.button("Run Discovery & Matching", type="primary", use_container_width=True):
         try:
             res = run_pipeline_orchestration()
-            st.success("✅ Pipeline executed successfully!")
+            st.success("Pipeline executed successfully!")
             st.rerun()
         except Exception as e:
-            st.error(f"❌ Error during pipeline execution: {e}")
+            st.error(f"Error during pipeline execution: {e}")
 
     if st.session_state.get("last_run_time"):
         st.caption(f"Last executed: {st.session_state['last_run_time']}")
@@ -326,7 +326,7 @@ with st.sidebar:
 # --- Hero Section ---
 st.markdown("""
 <div class="hero-container">
-    <div class="hero-badge">⚡ LangGraph Multi-Agent Architecture</div>
+    <div class="hero-badge">LangGraph Multi-Agent Architecture</div>
     <div class="hero-title">AI-Powered Job Discovery & Relevance Matcher</div>
     <div class="hero-subtitle">
         Continuously discovering, normalizing, deduplicating, and scoring opportunities 
@@ -383,11 +383,11 @@ st.markdown("<div style='height: 1.2rem;'></div>", unsafe_allow_html=True)
 
 # --- Navigation Tabs ---
 tab1, tab2, tab3, tab4, tab5 = st.tabs([
-    "🎯 Matched Opportunities",
-    "📊 Match Analytics",
-    "📄 Excel Report & Notification",
-    "👤 Candidate Profile",
-    "🗄️ Database & Run History"
+    "Matched Opportunities",
+    "Match Analytics",
+    "Excel Report & Notification",
+    "Candidate Profile",
+    "Database & Run History"
 ])
 
 
@@ -396,7 +396,7 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs([
 # ==========================================
 with tab1:
     if not results or not results.get("ranked_matches"):
-        st.info("No pipeline results available yet. Click **'⚡ Run Discovery & Matching'** in the sidebar to start!")
+        st.info("No pipeline results available yet. Click **'Run Discovery & Matching'** in the sidebar to start!")
     else:
         matches = results["ranked_matches"]
 
@@ -404,7 +404,7 @@ with tab1:
         filter_col1, filter_col2, filter_col3, filter_col4 = st.columns([2, 1.5, 1.5, 1.2])
 
         with filter_col1:
-            search_query = st.text_input("🔍 Search title, company, or skills:", placeholder="e.g. AI, Python, Analyst...")
+            search_query = st.text_input("Search title, company, or skills:", placeholder="e.g. AI, Python, Analyst...")
         
         with filter_col2:
             category_filter = st.selectbox(
@@ -464,9 +464,9 @@ with tab1:
             }.get(cat_val, "badge-category-low")
 
             cat_display_name = {
-                "HIGH_MATCH": "🔥 High Match",
-                "GOOD_MATCH": "✨ Good Match",
-                "STRETCH": "⚡ Stretch Opportunity",
+                "HIGH_MATCH": "High Match",
+                "GOOD_MATCH": "Good Match",
+                "STRETCH": "Stretch Opportunity",
                 "LOW_MATCH": "Low Relevance"
             }.get(cat_val, cat_val)
 
@@ -478,16 +478,16 @@ with tab1:
                             <span class="{cat_badge_class}">{cat_display_name}</span>
                             <span style="font-size:1.1rem; font-weight:800; color:#0F766E; margin-left:0.6rem;">{match.relevance_score:.1f}% Match</span>
                             <div class="job-title" style="margin-top:0.4rem;">{match.job.title}</div>
-                            <div class="job-company">{match.job.company} &nbsp;•&nbsp; <span style="color:#64748B; font-weight:500;">📍 {match.job.location}</span></div>
+                            <div class="job-company">{match.job.company} &nbsp;•&nbsp; <span style="color:#64748B; font-weight:500;">{match.job.location}</span></div>
                         </div>
                         <div style="text-align:right;">
-                            <span class="badge-workmode">🏢 {match.job.work_mode}</span>
+                            <span class="badge-workmode">{match.job.work_mode}</span>
                         </div>
                     </div>
                     <div style="margin-top:0.6rem; color:#475569; font-size:0.9rem;">
-                        <strong>💼 Experience:</strong> {match.job.experience_required or 'Flexible'} &nbsp;|&nbsp; 
-                        <strong>💰 Salary:</strong> {match.job.salary or 'Disclosed upon interview'} &nbsp;|&nbsp; 
-                        <strong>📅 Posted:</strong> {match.job.posted_at.strftime('%Y-%m-%d') if match.job.posted_at else 'Recent'}
+                        <strong>Experience:</strong> {match.job.experience_required or 'Flexible'} &nbsp;|&nbsp; 
+                        <strong>Salary:</strong> {match.job.salary or 'Disclosed upon interview'} &nbsp;|&nbsp; 
+                        <strong>Posted:</strong> {match.job.posted_at.strftime('%Y-%m-%d') if match.job.posted_at else 'Recent'}
                     </div>
                 </div>
                 """, unsafe_allow_html=True)
@@ -496,13 +496,13 @@ with tab1:
 
                 with col_details:
                     # Why This Matches
-                    with st.expander("💡 Why This Matches (Explainable AI Breakdown)", expanded=True):
+                    with st.expander("Why This Matches (Explainable AI Breakdown)", expanded=True):
                         for reason in match.why_matches:
                             st.markdown(f"- {reason}")
 
                         # Skills breakdown
                         st.markdown("**Matched Candidate Skills:**")
-                        matched_html = "".join([f'<span class="skill-chip-matched">✓ {s}</span>' for s in match.matched_skills])
+                        matched_html = "".join([f'<span class="skill-chip-matched">{s}</span>' for s in match.matched_skills])
                         st.markdown(matched_html or "<em>None specified in profile</em>", unsafe_allow_html=True)
 
                         if match.missing_skills:
@@ -514,12 +514,12 @@ with tab1:
                 with col_actions:
                     # Sources
                     st.markdown("**Discovered on:**")
-                    sources_html = "".join([f'<span class="badge-source">🔗 {s}</span>' for s in match.job.sources])
+                    sources_html = "".join([f'<span class="badge-source">{s}</span>' for s in match.job.sources])
                     st.markdown(sources_html, unsafe_allow_html=True)
 
                     st.markdown("<div style='height:0.5rem'></div>", unsafe_allow_html=True)
                     if match.job.application_url and match.job.application_url.startswith("http"):
-                        st.link_button("🌐 Apply Link", match.job.application_url, use_container_width=True)
+                        st.link_button("Apply Link", match.job.application_url, use_container_width=True)
 
                     # Application Tracking Selector
                     status_options = [s.value for s in ApplicationStatus]
@@ -587,7 +587,7 @@ with tab2:
 # TAB 3: Excel Report & Notifications
 # ==========================================
 with tab3:
-    st.subheader("📑 Automated Excel Deliverable")
+    st.subheader("Automated Excel Deliverable")
     
     report_path = results.get("report_path") if results else None
     if report_path and Path(report_path).exists():
@@ -596,7 +596,7 @@ with tab3:
         
         with open(path_obj, "rb") as f:
             st.download_button(
-                label="📥 Download Full Excel Report (.xlsx)",
+                label="Download Full Excel Report (.xlsx)",
                 data=f.read(),
                 file_name=path_obj.name,
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
@@ -613,7 +613,7 @@ with tab3:
 
     st.divider()
 
-    st.subheader("📧 Email Notification Preview")
+    st.subheader("Email Notification Preview")
     report_dir = settings.get_absolute_report_dir()
     email_previews = sorted(list(report_dir.glob("email_preview_*.txt")), reverse=True)
     
@@ -668,7 +668,7 @@ with tab4:
 # TAB 5: Database & Run History
 # ==========================================
 with tab5:
-    st.subheader("🗄️ Database Pipeline Execution History")
+    st.subheader("Database Pipeline Execution History")
     st.caption("Stored persistently in local SQLite (`job_agent.db`) or PostgreSQL")
 
     df_history = load_database_history()
